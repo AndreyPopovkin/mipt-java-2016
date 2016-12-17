@@ -27,14 +27,13 @@ public class LackOfMemoryStorage<K, V> implements KeyValueStorage<K, V> {
     private boolean closed = true;
     private String storageDirName;
     private RandomAccessFile workingFile;
-    private long maxOffset; 
+    private long maxOffset;
 
     private ParserInterface<K> keyParser = null;
     private ParserInterface<V> valueParser = null;
 
     private long getFileHash(String filename) throws IOException {
         long hash = 0;
-
         FileInputStream in = new FileInputStream(storageDirName + File.separator + filename);
         byte[] buffer = new byte[8 * 1024];
         int newBytes = in.read(buffer);
